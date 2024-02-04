@@ -55,40 +55,56 @@
 // При перезавантаженні сторінки перевіряти сховище та ставити тему, яка там вказана.
 // Додати класи для змін тем
 
-const checkBox = document.querySelector("#checkbox");
-const body = document.querySelector("body");
+// const checkBox = document.querySelector("#checkbox");
+// const body = document.querySelector("body");
 
-const themeKey = "theme";
-const lightTheme = "light-theme";
-const darkTheme = "dark-theme";
-const getTheme = localStorage.getItem(themeKey);
+// const themeKey = "theme";
+// const lightTheme = "light-theme";
+// const darkTheme = "dark-theme";
+// const getTheme = localStorage.getItem(themeKey);
 
-switch (getTheme) {
-  case darkTheme:
-    body.classList.add("dark");
-    checkBox.checked = true;
-    break;
+// switch (getTheme) {
+//   case darkTheme:
+//     body.classList.add("dark");
+//     checkBox.checked = true;
+//     break;
 
-  case lightTheme:
-    body.classList.add("light");
-    checkBox.checked = false;
-    break;
+//   case lightTheme:
+//     body.classList.add("light");
+//     checkBox.checked = false;
+//     break;
 
-  default:
-    body.classList.add("light");
-    checkBox.checked = false;
-    break;
+//   default:
+//     body.classList.add("light");
+//     checkBox.checked = false;
+//     break;
+// }
+
+// checkBox.addEventListener("click", () => {
+//   if (checkBox.checked === false) {
+//     localStorage.setItem(themeKey, lightTheme);
+//     body.classList.add("light");
+//     body.classList.remove("dark");
+//   }
+//   if (checkBox.checked === true) {
+//     localStorage.setItem(themeKey, darkTheme);
+//     body.classList.add("dark");
+//     body.classList.remove("light");
+//   }
+// });
+
+// TODO: ЗАДАЧА 3 на обіцянки (Promise) ====================================
+
+// Перероби функцію на проміс таким чином, щоб проміс повертав значення
+// через 2 секунди після виклику функції
+
+function greet() {
+  return new Promise((res) => {
+    setTimeout(() => {
+      res("Hello world 👋");
+    }, 3000);
+  });
 }
-
-checkBox.addEventListener("click", () => {
-  if (checkBox.checked === false) {
-    localStorage.setItem(themeKey, lightTheme);
-    body.classList.add("light");
-    body.classList.remove("dark");
-  }
-  if (checkBox.checked === true) {
-    localStorage.setItem(themeKey, darkTheme);
-    body.classList.add("dark");
-    body.classList.remove("light");
-  }
-});
+greet()
+  .then((value) => console.log(value))
+  .catch((err) => console.log(err));
